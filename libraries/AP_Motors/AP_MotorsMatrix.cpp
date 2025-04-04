@@ -1175,6 +1175,19 @@ bool AP_MotorsMatrix::setup_y6_matrix(motor_frame_type frame_type)
         add_motors_raw(motors, ARRAY_SIZE(motors));
         break;
     }
+    case MOTOR_FRAME_TYPE_Y6V: {
+        _frame_type_string = "Y6V";
+        static const AP_MotorsMatrix::MotorDefRaw motors[] {
+            {  0.0f,  -1.0f, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 1 },
+            { -1.0f,  0.500f, AP_MOTORS_MATRIX_YAW_FACTOR_CCW,  2 },
+            {  1.0f,  0.500f, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 3 },
+            {  0.0f, -1.000f, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  4 },
+            { -1.0f,  0.500f, AP_MOTORS_MATRIX_YAW_FACTOR_CW, 5 },
+            {  1.0f,  0.500f, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  6 },
+        };
+        add_motors_raw(motors, ARRAY_SIZE(motors));
+        break;
+    }
     default: {
         _frame_type_string = "default";
         static const AP_MotorsMatrix::MotorDefRaw motors[] {
